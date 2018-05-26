@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>无缝轮播幻灯片</title>
+    <style>
+        #box{
+            position:relative;
+            width:700px;
+            margin:30px auto;
+            overflow: hidden;
+        }
+        #pics{
+            margin:0;
+            padding:0;
+            width:400%;
+            list-style:none;
+            overflow: hidden;//清除浮动
+        }
+        #pics li{
+            float:left;
+            width:700px;
+        }
+        #pics img{
+            width:100%;
+            height:400px;
+        }
+        #nav{
+            position:absolute;
+            left:0;
+            bottom:20px;
+            height:20px;
+            width:100%;
+            text-align:center;
+        }
+        #nav a{
+            display:inline-block;
+            vertical-align: top;
+            width:20px;
+            height:20px;
+            background:#fff;
+        }
+        #nav .active{
+            background:#f60;
+        }
+        #prev,#next{
+            position:absolute;
+            width:30px;
+            height:400px;
+            top:0;
+            background: #e66;
+        }
+        #prev{
+            left:0;
+        }
+        #next{
+            right:0;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul id="pics">
+        <li>
+            <a href="#">
+                <img src="./images/pic1.png">
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="./images/pic2.png">
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="./images/pic3.png">
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="./images/pic4.png">
+            </a>
+        </li>
+    </ul>
+    <nav id="nav">
+        <a href="javascript:;" class="active"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+    </nav>
+    <a href="javascript:;" id="prev"></a>
+    <a href="javascript:;" id="next"></a>
+</div>
+<script type="text/javascript">
+    (function () {
+        var pics = document.querySelector("#pics");
+        var navs = document.querySelectorAll("#nav a");
+        var prev = document.querySelector("#prev");
+        var next = document.querySelector("#next");
+
+        for(let i = 0; i < navs.length; i++){
+            navs[i].onmouseover = function () {
+                for(let i = 0; i < navs.length; i++){
+                    navs[i].className = "";
+                }
+                this.className = "active";
+
+            };
+        }
+    })();
+</script>
+</body>
+</html>
