@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>drag</title>
+    <style>
+        #drag{
+            width:100px;height:100px;background-color:red;position:relative;
+        }
+    </style>
+</head>
+<body>
+<div id="drag">
+
+</div>
+<script>
+    var oDiv = document.getElementById('drag');
+    var disX = 0;
+    var disY = 0;
+    oDiv.onmousedown = (ev)=>{
+        var ev = ev || window.event;
+        disX = ev.clientX - oDiv.offsetLeft;
+        disY = ev.clientY - oDiv.offsetTop;
+
+        document.onmousemove = (ev)=>{
+            var ev = ev || window.event;
+            oDiv.style.left = ev.clientX - disX + 'px';
+            oDiv.style.top = ev.clientY - disY + 'px';
+        };
+
+        document.onmouseup = ()=>{
+            document.onmousemove = null;
+            document.onmouseup = null;
+        };
+        return false;
+    }
+</script>
+</body>
+</html>

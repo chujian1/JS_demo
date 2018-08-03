@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>H5实现drag</title>
+    <style>
+        #target_2{
+            width:100px;height:100px;background-color:red;
+        }
+        #target_1{
+            width:500px;height:500px;border:1px solid black;padding:20px;margin:20px;
+        }
+    </style>
+</head>
+<body>
+<div id="target_1" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+</div>
+<div id="target_2" draggable="true" ondragstart="drag(event)">
+
+</div>
+<script>
+    drag = (ev)=>{
+        ev.dataTransfer.setData("Text",ev.target.id);//设置被拖拽元素的数据
+    };
+    drop = (ev)=>{
+        ev.preventDefault();//默认无法将元素放置到其它元素中，阻止这种默认行为
+        var data = ev.dataTransfer.getData("Text");
+        ev.target.appendChild(document.getElementById(data));
+    };
+    allowDrop = (ev)=>{
+        ev.preventDefault();//默认以连接行为打开，阻止这种默认行为
+    }
+
+
+
+</script>
+</body>
+</html>
